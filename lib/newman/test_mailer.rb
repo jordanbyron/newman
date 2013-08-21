@@ -3,7 +3,7 @@
 # functionality provided by the mail gem.
 #
 # `Newman::TestMailer` may be a useful tool for Newman application developers,
-# at some point but is a bit tricky to work with due to the fact that it 
+# at some point but is a bit tricky to work with due to the fact that it
 # relies on global state. This is a known issue and will hopefully be solved in
 # a future version of Newman.
 #
@@ -14,7 +14,7 @@
 module Newman
   class TestMailer
     # ---
-      
+
     # To initialize a `Newman::TestMailer` object, a settings object must be
     # provided, i.e.
     #
@@ -34,7 +34,7 @@ module Newman
     # returns references to a single instance rather than creating new
     # instances. The constructor interface is simply preserved so that it
     # can be a drop-in replacement for a `Newman::Mailer` object.
-    #  
+    #
     # 3) The settings object is not actually used, and is only part of the
     # signature for API compatibility reasons.
     #
@@ -48,7 +48,7 @@ module Newman
 
         Mail.defaults do
           retriever_method :test
-          delivery_method  :test      
+          delivery_method  :test
         end
 
         self.instance = allocate
@@ -77,10 +77,10 @@ module Newman
     end
 
     # ---
-    
+
     # `Newman::TestMailer#new_message` is used to construct a new `Mail::Message` object,
-    # with the delivery settings set to test mode. 
-    # This method passes all its arguments on to `Mail.new`, so be sure 
+    # with the delivery settings set to test mode.
+    # This method passes all its arguments on to `Mail.new`, so be sure
     # to refer to the [mail gem's documentation](http://github.com/mikel/mail)
     # for details.
 

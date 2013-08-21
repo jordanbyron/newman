@@ -8,13 +8,15 @@ describe "Ping Pong" do
   let(:mailer) { server.mailer }
 
   it "responds to an email sent to test+ping@test.com" do
-    mailer.deliver_message(:to => "test+ping@test.com")
+    mailer.deliver_message(:to   => "test+ping@test.com",
+                           :from => "test@test.com")
     server.tick
     mailer.messages.first.subject.must_equal("pong")
   end
 
   it "responds to an email sent to test+bad@test.com" do
-    mailer.deliver_message(:to => "test+bad@test.com")
+    mailer.deliver_message(:to => "test+bad@test.com",
+                           :from => "test@test.com")
     server.tick
     mailer.messages.first.subject.must_equal("unknown command")
   end
@@ -56,8 +58,8 @@ describe "SimpleList" do
   end
 
   after do
-    if File.exist?(server.settings.application.simplelist_db) 
-      File.unlink(server.settings.application.simplelist_db) 
+    if File.exist?(server.settings.application.simplelist_db)
+      File.unlink(server.settings.application.simplelist_db)
     end
   end
 end

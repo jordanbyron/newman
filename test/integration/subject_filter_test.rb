@@ -17,7 +17,8 @@ describe "subject filter" do
   let(:mailer) { server.mailer }
 
   it "should automatically not match emails without subjects" do
-    mailer.deliver_message(:to => "test@test.com")
+    mailer.deliver_message(:to   => "test@test.com",
+                           :from => "test@test.com")
     server.tick
 
     mailer.messages.first.subject.must_equal("No subject, no greeting")
